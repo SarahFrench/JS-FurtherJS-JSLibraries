@@ -4,7 +4,8 @@ const readline = require('readline-sync');
 const roundedCorners = Buffer.from('<svg><rect x="0" y="0" width="200" height="200" rx="100" ry="100" /></svg>');
 
 function getFilename(){
-  console.log("\nEnter a filename:\n");
+  console.log("\nEnter a filename:");
+  console.log("(File should be in the input project folder)\n");
   let filename = readline.prompt().trim();
 
   while (!checkFilenameOK(filename)){
@@ -37,10 +38,10 @@ function makeOutputName(filename){
 }
 
 function cropImgToCircle(filename) {
-  sharp(filename).resize(200, 200).overlayWith(roundedCorners, {
+  sharp(`input/${filename}`).resize(200, 200).overlayWith(roundedCorners, {
     cutout: true,
     gravity: 'centre'
-  }).toFile(`${makeOutputName(filename)}`, function (err) {
+  }).toFile(`output/${makeOutputName(filename)}`, function (err) {
     console.log (`Circularised image ${makeOutputName(filename)} saved!`)
     if (err){
       console.log(err);
