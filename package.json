@@ -1,21 +1,25 @@
 {
-  "name": "js-furtherjs-jslibraries",
+  "name": "js-furtherjs-jslibraries-copy",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gulp dev"
+    "hello": "echo \"Hello World!\"",
+    "dev": "gulp dev",
+    "build": "gulp build"
   },
   "author": "Sarah French",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.2.2",
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^8.0.0",
     "gulp-nodemon": "^2.4.2",
-    "sharp": "0.21.2"
+    "readline-sync": "^1.4.9",
+    "sharp": "^0.21.3"
   },
   "devDependencies": {
     "mocha": "^5.2.0"
