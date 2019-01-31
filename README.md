@@ -88,3 +88,18 @@
 16) This started me to get errors when running `npm run-script dev` and couldn't run `gulp build` or `gulp dev`. Commented out the new stuff from step 15 onwards. `gulp build` was then able to start to run a gulp script, but failed at error "Cannot find module 'babel-preset-env'"
 17) `npm install babel-preset-env`
 18) Can now run `gulp build` ok. `npm run-script build` runs ok too.
+
+Mocha:
+
+Testing functions in index.js. Found that if I directly tested that file it'd run and want user input. Causes a situation where I can only see the test results if I can get through the script without any errors (lol).
+
+To solve this, I copy functions out of index.js into functions.js and test that file instead.
+
+Ideally I'd also have tests to see that the script produces a new image in the output folder, and that the image name is correct, but I had trouble with the `chai-fs` module. Specifically there was an issue with line 2 of:
+
+`var chai = require('chai');
+chai.use(require('chai-fs'));`
+
+Added mocha to gulpfile.js - used this documentation: https://gulpjs.org/recipes/mocha-test-runner-with-gulp.html
+`$ gulp mocha` will run tests on src/functions.js
+`$ gulp dev` will run the mocha gulp task when it starts, but for some reason it doesn't run again when nodemon detects a file change
